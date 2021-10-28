@@ -20,7 +20,6 @@ public class Inicio {
             //leemos la opcion del usuario
 
             opcion = sc.nextInt();
-        }while (opcion != 5);
 
         switch(opcion){
             case 1:
@@ -42,5 +41,6 @@ public class Inicio {
 
 
         }
+        }while (opcion != 5);
     }
 }
