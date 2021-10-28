@@ -2,6 +2,7 @@ package com.platzi.mensajes_app;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class MensajeDAO {
@@ -31,6 +32,31 @@ public class MensajeDAO {
     }
 
     public static void leerMensajeDB(){
+        Conexion db_connect = new Conexion();
+
+        //prepara la sentencia
+        PreparedStatement ps = null;
+        //trae los datos en filas para procesarlos
+        ResultSet rs = null;
+
+        try(Connection conexion = db_connect.get_connection()){
+            String query = "SELECT * FROM `mensajes` ";
+            ps = conexion.prepareStatement(query);
+            //ejecuta la consulta
+            rs = ps.executeQuery();
+
+            while (rs.next()){
+                System.out.println("Id: "+rs.getInt("id_mensaje"));
+                System.out.println("Mensaje: "+rs.getString("mensaje"));
+                System.out.println("autor mensaje: "+rs.getString("autor_mensaje"));
+                System.out.println("Fecha: "+rs.getString("fecha_mensaje"));
+            }
+
+        }catch (SQLException e){
+            System.out.println("Error al recuperar los datos"+e);
+
+        }
+
 
     }
 

@@ -21,6 +21,7 @@ public class MensajeService {
     }
 
     public static void listarMensajes(){
+        MensajeDAO.leerMensajeDB();
 
     }
 
